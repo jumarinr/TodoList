@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" initial-scale=1.0>
+    <title>To do list</title>
+  </head>
+  <body>
+    <h1>Cosas que necesito hacer.</h1>
+    <form action="/todos" method="post">
+      <input type="text" name="description">
+      <button type="submit">añadir</button>
+    </form>
+
+    <ol>
+      {{#todos}}
+      <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+          {{description}}   <button type="submit">Hecha</button>
+        </form>
+        </li>
+      {{/todos}}
+    </ol>
+    <h3>Done</h3>
+    <ol>
+      {{#doneTodos}}
+      <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+          {{description}}   <button type="submit">Deshecha</button>
+        </form>
+        </li>
+      {{/doneTodos}}
+    </ol>
+  </body>
+</html>
